@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reactive;
 using System.Text;
 
 namespace RomanNumbersCalculator.ViewModels
@@ -29,15 +30,15 @@ namespace RomanNumbersCalculator.ViewModels
         string Text = "";
         string operation;
 
-        public string LogicalOperation(string operation)
+        public void LogicalOperation(string operation)
         {
-            if (this.operation == null) {
+            if (this.operation == null)
+            {
                 this.operation = operation;
                 this.LastNumber = RomanNum.ToArabic(Text);
                 Text = "";
-                ReactiveCommand<string, string> Textpole;
-                Textpole = ReactiveCommand.Create<string, string>(str => TextPole = "");
-            } else
+            }
+            else
             {
                 switch (this.operation)
                 {
@@ -62,22 +63,19 @@ namespace RomanNumbersCalculator.ViewModels
                             break;
                         }
                 }
-                
+
                 if (operation == "=")
                 {
                     Text = RomanNum.ToRoman(this.LastNumber);
-                    ReactiveCommand<string, string> Textpole;
-                    Textpole = ReactiveCommand.Create<string, string>(str => TextPole = RomanNum.ToRoman(this.LastNumber));
+
                     this.operation = null;
                     this.LastNumber = 0;
-                } else
+                }
+                else
                 {
                     Text = "";
-                    ReactiveCommand<string, string> Textpole;
-                    Textpole = ReactiveCommand.Create<string, string>(str => TextPole = "");
                 }
             }
-            return Text;
         }
         public MainWindowViewModel()
         {
