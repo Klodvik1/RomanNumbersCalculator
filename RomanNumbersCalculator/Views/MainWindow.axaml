@@ -3,15 +3,76 @@
         xmlns:vm="using:RomanNumbersCalculator.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="500"
+		Height="500" Width="400"
         x:Class="RomanNumbersCalculator.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="RomanNumbersCalculator">
 
-    <Design.DataContext>
-        <vm:MainWindowViewModel/>
-    </Design.DataContext>
-
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+	<Grid ShowGridLines="False">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="100"></RowDefinition>
+			<RowDefinition Height="400"></RowDefinition>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="100"></ColumnDefinition>
+			<ColumnDefinition Width="100"></ColumnDefinition>
+			<ColumnDefinition Width="100"></ColumnDefinition>
+			<ColumnDefinition Width="100"></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		<TextBlock Name="text" Grid.Column="2" Grid.Row="0" Text="{Binding TextPole}" Width="500" Height="100"  Background="White"/>
+		<StackPanel Grid.Column="0" Grid.Row="1">
+			<StackPanel.Styles>
+				<Style Selector="Button">
+					<Setter Property="Height" Value="100"/>
+					<Setter Property="Width" Value="100"/>
+					<Setter Property="HorizontalContentAlignment" Value="Center"/>
+					<Setter Property="VerticalContentAlignment" Value="Center"/>
+					<Setter Property="Background" Value="White"/>
+					<Setter Property="BorderBrush" Value="Black"/>
+					<Setter Property="BorderThickness" Value="1"/>
+				</Style>
+			</StackPanel.Styles>
+			<Button Name="number1"  Content="I" Command="{Binding InputNumber}" CommandParameter="I" />
+			<Button Name="number5" Content="V" Command="{Binding InputNumber}" CommandParameter="V" />
+			<Button Name="number10" Content="X" Command="{Binding InputNumber}" CommandParameter="X" />
+			<Button Name="number50" Content="L" Command="{Binding InputNumber}" CommandParameter="L" />
+		</StackPanel>
+		<StackPanel Grid.Column="1" Grid.Row="1">
+			<StackPanel.Styles>
+				<Style Selector="Button">
+					<Setter Property="Height" Value="100"/>
+					<Setter Property="Width" Value="100"/>
+					<Setter Property="HorizontalContentAlignment" Value="Center"/>
+					<Setter Property="VerticalContentAlignment" Value="Center"/>
+					<Setter Property="Background" Value="White"/>
+					<Setter Property="BorderBrush" Value="Black"/>
+					<Setter Property="BorderThickness" Value="1"/>
+				</Style>
+			</StackPanel.Styles>
+			<Button Name="number100" Content="C" Command="{Binding InputNumber}" CommandParameter="C" />
+			<Button Name="number500" Content="D" Command="{Binding InputNumber}" CommandParameter="D" />
+			<Button Name="number1000" Content="M" Command="{Binding InputNumber}" CommandParameter="M" />
+			<Button Name="clear" Content="CE" Command="{Binding ClearNumber}" />
+		</StackPanel>
+		<StackPanel Grid.Column="2" Grid.Row="1">
+			<StackPanel.Styles>
+				<Style Selector="Button">
+					<Setter Property="Height" Value="100"/>
+					<Setter Property="Width" Value="100"/>
+					<Setter Property="HorizontalContentAlignment" Value="Center"/>
+					<Setter Property="VerticalContentAlignment" Value="Center"/>
+					<Setter Property="Background" Value="White"/>
+					<Setter Property="BorderBrush" Value="Black"/>
+					<Setter Property="BorderThickness" Value="1"/>
+				</Style>
+			</StackPanel.Styles>
+			<Button Name="Addition" Content="+" Command="{Binding LogicalOperation}" CommandParameter="+" />
+			<Button Name="Subtraction" Content="-" Command="{Binding LogicalOperation}" CommandParameter="-" />
+			<Button Name="Multiplication" Content="*" Command="{Binding LogicalOperation}" CommandParameter="*"   />
+			<Button Name="Division" Content="/" Command="{Binding LogicalOperation}" CommandParameter="/"   />
+		</StackPanel>
+		<Button Name="Equality" Content="=" Command="{Binding LogicalOperation}"  CommandParameter="=" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="3" Grid.Row="2" Width="100" Height="400" Background="White" BorderBrush="Black"/>
+	</Grid>
 
 </Window>
